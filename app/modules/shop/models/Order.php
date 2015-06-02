@@ -2,6 +2,7 @@
 
 namespace app\modules\shop\models;
 
+use dektrium\user\models\User;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 
@@ -21,9 +22,9 @@ use yii\behaviors\TimestampBehavior;
  */
 class Order extends \yii\db\ActiveRecord
 {
-    const STATUS_NEW = 'New';
-    const STATUS_IN_PROGRESS = 'In progress';
-    const STATUS_DONE = 'Done';
+    const STATUS_NEW = 'Новый';
+    const STATUS_IN_PROGRESS = 'Выполняется';
+    const STATUS_DONE = 'Выполнен';
 
     public function behaviors()
     {
@@ -49,7 +50,7 @@ class Order extends \yii\db\ActiveRecord
         return [
             [['phone', 'email'], 'required'],
             [['notes'], 'string'],
-            [['phone', 'email'], 'string', 'max' => 255],
+            [['phone', 'email','status'], 'string', 'max' => 255],
             [['email'], 'email'],
         ];
     }
@@ -79,6 +80,14 @@ class Order extends \yii\db\ActiveRecord
         return $this->hasMany(OrderItem::className(), ['order_id' => 'id']);
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id'=>'user_id']);
+    }
+
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
@@ -94,9 +103,9 @@ class Order extends \yii\db\ActiveRecord
     public static function getStatuses()
     {
         return [
-            self::STATUS_DONE => 'Done',
-            self::STATUS_IN_PROGRESS => 'In progress',
-            self::STATUS_NEW => 'New',
+            self::STATUS_DONE => 'Выполнен',
+            self::STATUS_IN_PROGRESS => 'Выполняется',
+            self::STATUS_NEW => 'Новый',
         ];
     }
 

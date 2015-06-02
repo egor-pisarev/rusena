@@ -155,13 +155,11 @@ $asset = \app\themes\rusena\assets\Asset::register($this);
 					<div class="footer-links">
 						<a href="#" class="item">
 							<div class="image">
-								<img src="data/f1.png">
 							</div>
 							<span>Разработка сайта</span>
 						</a>
 						<a href="#" class="item">
 							<div class="image">
-								<img src="data/f2.png">
 							</div>
 							<span>Дизайн сайта</span>
 						</a>

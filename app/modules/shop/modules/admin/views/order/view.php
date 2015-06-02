@@ -25,20 +25,23 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
+    <h3>Информация о заказе</h3>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
             'created_at:datetime',
             'updated_at:datetime',
+            'user.username',
+            'address',
             'phone',
             'email',
             'notes:ntext',
             'status',
+
         ],
     ]) ?>
-
+<h3>Товары в заказе</h3>
     <?= GridView::widget([
         'dataProvider' => $itemsDataProvider,
         'columns' => [
