@@ -12,5 +12,5 @@ namespace app\modules\user\controllers;
 use dektrium\user\controllers\RecoveryController as BaseController;
 
 class RecoveryController extends BaseController {
-   public $layout = '@easyii/views/layouts/empty';
+    public $layout = '@app/themes/rusena/layouts/main';
 }

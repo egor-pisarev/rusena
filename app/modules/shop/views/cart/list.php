@@ -22,7 +22,7 @@ use yii\widgets\Pjax;
                             ?>
                         </td>
                         <td class="content">
-                            <?= Html::a($product->title,['shop/product/view','id'=>$product->id],['class'=>'title']) ?>
+                            <?= Html::a($product->title,['/shop/catalog/view','slug'=>$product->slug,'category'=>$product->category->slug],['class'=>'title']) ?>
                             <p>
                                 <?=$product->description?>
                             </p>
