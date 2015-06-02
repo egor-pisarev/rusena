@@ -1,6 +1,7 @@
 <?php
 
 namespace app\controllers;
+use app\modules\shop\modules\admin\models\ProductSearch;
 use Yii;
 use yii\easyii\modules\article\models\Category;
 use yii\easyii\modules\catalog\api\Catalog;
@@ -95,4 +96,6 @@ class SiteController extends Controller
         }
         throw new NotFoundHttpException();
     }
+
+
 }

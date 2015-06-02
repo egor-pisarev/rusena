@@ -67,6 +67,18 @@ class CatalogController extends \yii\web\Controller
         return $this->render('view',['model'=>$model]);
     }
 
+    public function actionSearch()
+    {
+        Url::remember();
+
+        $searchModel = new ProductSearch();
+
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        return $this->render('search', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
 
 
 

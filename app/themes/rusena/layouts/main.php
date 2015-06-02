@@ -6,6 +6,8 @@ use yii\widgets\Breadcrumbs;
 use app\modules\shop\widgets\Cart;
 use app\modules\shop\widgets\Login;
 use app\modules\shop\widgets\Catalog;
+use app\modules\shop\widgets\Search;
+
 use yii\easyii\modules\news\api\News;
 
 /**
@@ -74,12 +76,8 @@ $asset = \app\themes\rusena\assets\Asset::register($this);
                                     ],
                                 ]);
                                 ?>
-                                <form class="navbar-form navbar-left search-form" role="search">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Поиск">
-                                    </div>
-                                    <button type="submit" class="btn btn-default"></button>
-                                </form>
+                                <?=Search::widget()?>
+
 							</div>
 
 						</nav>

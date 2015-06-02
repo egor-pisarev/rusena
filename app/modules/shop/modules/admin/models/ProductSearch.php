@@ -12,6 +12,8 @@ use app\modules\shop\models\Product;
  */
 class ProductSearch extends Product
 {
+
+    public $text = null;
     /**
      * @inheritdoc
      */
@@ -19,7 +21,7 @@ class ProductSearch extends Product
     {
         return [
             [['id', 'category_id'], 'integer'],
-            [['title', 'description'], 'safe'],
+            [['title', 'description','text'], 'safe'],
             [['price'], 'number'],
         ];
     }
@@ -48,8 +50,14 @@ class ProductSearch extends Product
             'query' => $query,
         ]);
 
+
         if (!($this->load($params) && $this->validate())) {
             return $dataProvider;
+        }
+
+        if($this->text){
+            $query->andFilterWhere(['like', 'title', $this->text])
+                ->orFilterWhere(['like', 'description', $this->text]);
         }
 
         $query->andFilterWhere([
