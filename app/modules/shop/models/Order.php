@@ -50,6 +50,7 @@ class Order extends \yii\db\ActiveRecord
         return [
             [['phone', 'email'], 'required'],
             [['notes'], 'string'],
+            [['user_id'],'number'],
             [['phone', 'email','status'], 'string', 'max' => 255],
             [['email'], 'email'],
         ];

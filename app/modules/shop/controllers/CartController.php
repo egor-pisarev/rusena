@@ -78,6 +78,7 @@ class CartController extends \yii\web\Controller
             $order->phone = '';
             $order->address = '';
             $order->email = Yii::$app->user->identity->email;
+            $order->user_id = Yii::$app->user->identity->id;
         }
 
         /* @var $cart ShoppingCart */
@@ -90,9 +91,6 @@ class CartController extends \yii\web\Controller
         if ($order->load(\Yii::$app->request->post()) && $order->validate()) {
             $transaction = $order->getDb()->beginTransaction();
             $order->save(false);
-            if(Yii::$app->user->isGuest){
-                $order->user_id = Yii::$app->user->identity->id;
-            }
 
             foreach($products as $product) {
                 $orderItem = new OrderItem();
