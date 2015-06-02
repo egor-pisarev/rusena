@@ -133,23 +133,23 @@ $asset = \app\themes\rusena\assets\Asset::register($this);
 				</div>
 				<div class="col-md-4">
 					<div id="nav-footer" class="footer-menu">
-						<ul>
-							<li class="active"><a href="#">Главная</a></li>
-							<li class=""><a href="#">О компании</a></li>
-							<li class=""><a href="#">Новости</a></li>
-							<li class=""><a href="#">Доставка и оплата</a></li>
-							<li class=""><a href="#">Таблица размеров</a></li>
-							<li class=""><a href="#">Контакты</a></li>
-						</ul>
+                        <?php
+                        echo Menu::widget([
+                            'items' => [
+                                ['label' => 'Главная', 'url' => ['/site/index']],
+                                ['label' => 'О компании', 'url' => ['/page/about']],
+                                ['label' => 'Новости', 'url' => ['/news']],
+                                ['label' => 'Каталог', 'url' => ['/catalog']],
+                                ['label' => 'Доставка и оплата', 'url' => ['/page/information']],
+                                ['label' => 'Таблица размеров', 'url' => ['/page/size']],
+                                ['label' => 'Контакты', 'url' => ['/site/feedback']],
+                            ],
+                        ]);
+                        ?>
 					</div>
 					<div id="catalog-footer"  class="footer-menu">
-						<ul>
-							<li><a href="#">Блузы</a></li>
-							<li><a href="#">Платья</a></li>
-							<li><a href="#">Жакеты</a></li>
-							<li><a href="#">Водолазки</a></li>
-						</ul>
-					</div>
+                        <?=Catalog::widget()?>
+                    </div>
 				</div>
 				<div class="col-md-4">
 					<div class="footer-links">
