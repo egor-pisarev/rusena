@@ -69,6 +69,7 @@ $config = [
                 'pathMap' => [
                     '@app/views' => '@app/themes/rusena',
                     '@vendor/dektrium/yii2-user/widgets/views'=>'@app/themes/rusena/views/widgets',
+                    '@easyii/views/layouts'=>'@app/themes/rusena/layouts',
                 ],
                 'baseUrl'   => 'themes/rusena'
             ]
