@@ -40,6 +40,8 @@ class CatalogController extends \yii\web\Controller
 
     public function actionView($slug)
     {
+        Url::remember();
+
         $model = Product::findBySlug($slug);
         if(!$model){
             throw new HttpException(404,'Page not found');

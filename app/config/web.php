@@ -74,7 +74,7 @@ $config = [
             ]
         ],
         'cart' => [
-            'class' => 'yz\shoppingcart\ShoppingCart',
+            'class' => 'app\modules\shop\components\ShoppingCart',
             'cartId' => 'my_application_cart',
         ]
     ],
