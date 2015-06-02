@@ -4,6 +4,9 @@ use yii\helpers\Url;
 use yii\easyii\assets\FrontendAsset;
 use yii\easyii\models\Setting;
 
+if(!Yii::$app->user->identity->isAdmin){
+    return;
+}
 $asset = FrontendAsset::register($this);
 $position = Setting::get('toolbar_position') === 'bottom' ? 'bottom' : 'top';
 $this->registerCss('body {padding-'.$position.': 50px;}');
