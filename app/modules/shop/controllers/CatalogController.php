@@ -9,11 +9,24 @@ use app\modules\shop\models\Product;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\HttpException;
+use yii\easyii\modules\page\api\Page;
+
 
 class CatalogController extends \yii\web\Controller
 {
+    public function behaviors(){
+        return [
+            'seo'=>'app\components\PageSeoBehavior',
+        ];
+    }
+
     public function actionIndex()
     {
+
+        $page = Page::get('catalog');
+
+        $this->setSeoText($page);
+
         $categories = Category::find()->indexBy('id')->where(['parent_id'=>null])->orderBy('id')->all();
 
         return $this->render('index',['categories'=>$categories]);
@@ -27,6 +40,8 @@ class CatalogController extends \yii\web\Controller
         if(!$category){
             throw new HttpException(404,'Page not found');
         }
+
+        $this->setSeoText($category);
 
         $dataProvider = new ActiveDataProvider([
             'query'=>Product::find()->where(['category_id'=>$category->id]),
@@ -43,6 +58,9 @@ class CatalogController extends \yii\web\Controller
         Url::remember();
 
         $model = Product::findBySlug($slug);
+
+        $this->setSeoText($model);
+
         if(!$model){
             throw new HttpException(404,'Page not found');
         }

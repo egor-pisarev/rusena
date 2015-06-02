@@ -4,6 +4,7 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use zxbodya\yii2\imageAttachment\ImageAttachmentWidget;
+use yii\easyii\widgets\SeoForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\shop\modules\admin\models\Category */
@@ -28,6 +29,7 @@ use zxbodya\yii2\imageAttachment\ImageAttachmentWidget;
     )
     ?>
 
+    <?= SeoForm::widget(['model' => $model]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

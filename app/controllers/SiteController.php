@@ -13,6 +13,12 @@ use yii\helpers\Url;
 
 class SiteController extends Controller
 {
+    public function behaviors(){
+        return [
+            'seo'=>'app\components\PageSeoBehavior',
+        ];
+    }
+
     public function actions()
     {
         return [
@@ -39,16 +45,14 @@ class SiteController extends Controller
         return $this->render('index',['productsDataProvider'=>$productsDataProvider]);
     }
 
+
+
     public function actionPage($slug)
     {
         $page = Page::get($slug);
 
-        $this->view->registerMetaTag([
-            'keywords'=>$page->seo_keywords,
-            'description'=>$page->seo_description,
-        ]);
+        $this->setSeoText($page);
 
-        $this->view->title = $page->seo_title;
         return $this->render('page',['page'=>$page]);
     }
 

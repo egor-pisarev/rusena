@@ -7,6 +7,7 @@ use yii\behaviors\SluggableBehavior;
 use yz\shoppingcart\CartPositionInterface;
 use yz\shoppingcart\CartPositionTrait;
 use app\modules\shop\models\Category;
+use yii\easyii\behaviors\SeoBehavior;
 
 /**
  * This is the model class for table "product".
@@ -39,6 +40,7 @@ class Product extends \yii\db\ActiveRecord implements CartPositionInterface
     public function behaviors()
     {
         return [
+            'seo' => SeoBehavior::className(),
             [
                 'class' => SluggableBehavior::className(),
                 'attribute' => 'title',

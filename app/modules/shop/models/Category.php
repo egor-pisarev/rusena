@@ -5,6 +5,8 @@ namespace app\modules\shop\models;
 use Yii;
 use yii\behaviors\SluggableBehavior;
 use zxbodya\yii2\imageAttachment\ImageAttachmentBehavior;
+use yii\easyii\behaviors\SeoBehavior;
+
 
 /**
  * This is the model class for table "category".
@@ -23,6 +25,7 @@ class Category extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
+            'seo' => SeoBehavior::className(),
             [
                 'class' => SluggableBehavior::className(),
                 'attribute' => 'title',

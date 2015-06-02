@@ -3,6 +3,7 @@
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\easyii\widgets\SeoForm;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Product */
@@ -22,6 +23,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'price')->textInput(['maxlength' => 19]) ?>
 
     <?= $form->field($model, 'is_bestseller')->checkbox() ?>
+
+    <?= SeoForm::widget(['model' => $model]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
