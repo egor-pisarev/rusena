@@ -5,50 +5,42 @@ use \yii\bootstrap\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $products common\models\Product[] */
 ?>
-
-<h1>Your order</h1>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-xs-4">
-
-        </div>
-        <div class="col-xs-2">
-            Price
-        </div>
-        <div class="col-xs-2">
-            Quantity
-        </div>
-        <div class="col-xs-2">
-            Cost
-        </div>
-    </div>
+<h1>Оформление заказа</h1>
+<div class="cart-list">
     <?php foreach ($products as $product):?>
-    <div class="row">
-        <div class="col-xs-4">
-            <?= Html::encode($product->title) ?>
+        <div class="item">
+            <table>
+                <tr>
+                    <td class="image">
+                        <?php
+                        $images = $product->images;
+                        if (isset($images[0])) {
+                            echo  Html::a(Html::img($images[0]->getUrl(),['width'=>'100px']),['/shop/catalog/view','id'=>$product->id]);
+                        }
+                        ?>
+                    </td>
+                    <td class="content">
+                        <?= Html::a($product->title,['shop/product/view','id'=>$product->id],['class'=>'title']) ?>
+                        <p>
+                            <?=$product->description?>
+                        </p>
+                    </td>
+                    <td class="price">
+                        <span><?= $product->getCost() ?> Р</span>
+                    </td>
+                </tr>
+            </table>
         </div>
-        <div class="col-xs-2">
-            $<?= $product->price ?>
-        </div>
-        <div class="col-xs-2">
-            <?= $quantity = $product->getQuantity()?>
-        </div>
-        <div class="col-xs-2">
-            $<?= $product->getCost() ?>
-        </div>
-    </div>
+
     <?php endforeach ?>
-    <div class="row">
-        <div class="col-xs-8">
 
-        </div>
-        <div class="col-xs-2">
-            Total: $<?= $total ?>
-        </div>
+
+    <div class="item">
+        <div class="summ">ИТОГО:<span><?= $total ?> P</span></div>
     </div>
+</div>
 
-    <div class="row">
+<div class="row">
         <div class="col-xs-12">
             <?php
             /* @var $form ActiveForm */
@@ -62,11 +54,10 @@ use \yii\bootstrap\ActiveForm;
 
             <div class="form-group row">
                 <div class="col-xs-12">
-                    <?= Html::submitButton('Order', ['class' => 'btn btn-primary']) ?>
+                    <?= Html::submitButton('Отправить заказ', ['class' => 'content-btn']) ?>
                 </div>
             </div>
 
             <?php ActiveForm::end() ?>
         </div>
     </div>
-</div>

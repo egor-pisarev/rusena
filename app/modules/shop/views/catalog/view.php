@@ -34,7 +34,7 @@ use yii\helpers\Markdown;
                 <div class="price">
                     <?= $model->price ?> Р
                 </div>
-                <a class="add-cart"><span>В корзину</span></a>
+                <a class="add-cart" href="/cart"><span>В корзину</span></a>
             </div>
         </div>
     </div>

@@ -51,8 +51,8 @@ use yii\helpers\Html;
 
 <?php else: ?>
 <div id="aut-form">
-    Вы вошли как: <?=Yii::$app->user->identity->username?>
-    <?= Html::a(Yii::t('user', 'Logout'), ['/user/security/logout'], ['class' => 'btn btn-danger btn-block', 'data-method' => 'post']) ?>
+    <div class="title">Вы вошли как: <?=Yii::$app->user->identity->username?></div>
+        <?= Html::a(Yii::t('user', 'Logout'), ['/user/security/logout'], ['class' => 'btn btn-block btn-notice', 'data-method' => 'post']) ?>
 </div>
 
 <?php endif ?>
