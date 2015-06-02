@@ -5,7 +5,7 @@ use yii\helpers\Markdown;
 
 ?>
 <section>
-    <h1><a href="#">Каталог</a>><a class="sub" href="#">Платья</a></h1>
+    <h1><?=Html::a('Каталог',['/shop/catalog/index'])?>><?=Html::a($model->category->title,['/shop/catalog/list','slug'=>$model->category->slug],['class'=>'sub'])?>><?=$model->title?></h1>
     <div id="product-page">
         <div class="image">
             <?php

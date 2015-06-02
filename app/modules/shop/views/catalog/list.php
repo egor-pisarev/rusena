@@ -6,8 +6,9 @@ use yii\widgets\ListView;
 $title = $category === null ? 'Welcome!' : $category->title;
 $this->title = Html::encode($title);
 ?>
+
 <section>
-    <h1>Каталог</h1>
+    <h1><?=Html::a('Каталог',['/shop/catalog/index'])?>><?=$category->title?></h1>
     <div class="catalog-list items">
         <div class="row">
             <?= ListView::widget([
