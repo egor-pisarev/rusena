@@ -663,6 +663,7 @@ footer {
 }
 #product-page {
 	display: table;
+    width: 100%;
 }
 #product-page .image {
 	width: 300px;
