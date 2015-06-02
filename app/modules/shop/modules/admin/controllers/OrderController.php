@@ -2,9 +2,11 @@
 
 namespace app\modules\shop\modules\admin\controllers;
 
+use app\modules\shop\models\OrderItem;
 use Yii;
 use app\modules\shop\models\Order;
 use app\modules\shop\modules\admin\models\OrderSearch;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -48,8 +50,13 @@ class OrderController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $itemsDataProvider = new ActiveDataProvider([
+            'query'=>OrderItem::find()->where(['order_id'=>$id]),
+        ]);
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'itemsDataProvider'=>$itemsDataProvider,
         ]);
     }
 

@@ -50,6 +50,7 @@ use \yii\bootstrap\ActiveForm;
 
             <?= $form->field($order, 'phone') ?>
             <?= $form->field($order, 'email') ?>
+            <?= $form->field($order, 'address')->textarea() ?>
             <?= $form->field($order, 'notes')->textarea() ?>
 
             <div class="form-group row">

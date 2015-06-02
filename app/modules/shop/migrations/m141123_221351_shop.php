@@ -50,6 +50,7 @@ class m141123_221351_shop extends Migration
             'email' => Schema::TYPE_STRING,
             'notes' => Schema::TYPE_TEXT,
             'status' => Schema::TYPE_STRING,
+            'user_id' => Schema::TYPE_INTEGER,
         ], $tableOptions);
 
         $this->createTable('{{%order_item}}', [

@@ -2,6 +2,7 @@
 
 namespace app\modules\shop\controllers;
 
+use Yii;
 use app\modules\shop\models\Order;
 use app\modules\shop\models\OrderItem;
 use app\modules\shop\models\Product;
@@ -73,6 +74,11 @@ class CartController extends \yii\web\Controller
     public function actionOrder()
     {
         $order = new Order();
+        if(!Yii::$app->user->isGuest){
+            $order->phone = '';
+            $order->address = '';
+            $order->email = Yii::$app->user->identity->email;
+        }
 
         /* @var $cart ShoppingCart */
         $cart = \Yii::$app->cart;
@@ -84,6 +90,9 @@ class CartController extends \yii\web\Controller
         if ($order->load(\Yii::$app->request->post()) && $order->validate()) {
             $transaction = $order->getDb()->beginTransaction();
             $order->save(false);
+            if(Yii::$app->user->isGuest){
+                $order->user_id = Yii::$app->user->identity->id;
+            }
 
             foreach($products as $product) {
                 $orderItem = new OrderItem();

@@ -26,7 +26,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             'title',
-            'description:ntext',
             [
                 'attribute' => 'category_id',
                 'value' => function ($model) {
