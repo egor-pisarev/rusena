@@ -52,7 +52,7 @@ use yii\helpers\Html;
 <?php else: ?>
 <div id="aut-form">
     <div class="title">Вы вошли как: <?=Yii::$app->user->identity->username?></div>
-        <?= Html::a(Yii::t('user', 'Logout'), ['/user/security/logout'], ['class' => 'btn btn-block btn-notice', 'data-method' => 'post']) ?>
+        <?= Html::a(Yii::t('user', 'Logout'), ['/user/security/logout'], ['class' => 'btn btn-block', 'data-method' => 'post']) ?>
 </div>
 
 <?php endif ?>

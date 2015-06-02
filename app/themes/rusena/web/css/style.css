@@ -73,7 +73,7 @@ header .container {
 #cart-block .actions {
 	margin-top: 15px;
 }
-#cart-block .actions .btn {
+#cart-block .actions .btn, #aut-form .btn {
 	display: inline-block;
 	color: #fff;
 	border: 1px solid #fff;
@@ -82,7 +82,7 @@ header .container {
 	font-size: 12px;
 	text-decoration: none;
 }
-#cart-block .actions .btn:hover {
+#cart-block .actions .btn:hover, #aut-form .btn:hover {
 	color: #000;
 	background: #fee820;
 }
