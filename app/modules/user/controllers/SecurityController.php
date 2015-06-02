@@ -13,4 +13,12 @@ use dektrium\user\controllers\SecurityController as BaseController;
 
 class SecurityController extends BaseController {
    public $layout = '@app/themes/rusena/layouts/main';
+
+    /** @inheritdoc */
+    public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+        unset($behaviors['verbs']);
+        return $behaviors;
+    }
 }

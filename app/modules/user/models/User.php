@@ -15,6 +15,6 @@ class User extends BaseUser
 {
     public function isRoot()
     {
-        return true;
+        return $this->getIsAdmin();
     }
 }

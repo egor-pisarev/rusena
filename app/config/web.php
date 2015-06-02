@@ -85,7 +85,7 @@ $config = [
             'modelMap' => [
                 'User' => 'app\modules\user\models\User',
             ],
-            'admins'=>['egor'],
+            'admins'=>['admin'],
         ],
         'shop'=>[
             'class'=>'app\modules\shop\Module',
