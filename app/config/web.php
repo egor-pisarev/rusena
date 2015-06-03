@@ -60,7 +60,6 @@ $config = [
                 'catalog/<category>/<slug>'=>'shop/catalog/view',
                 'cart'=>'shop/cart/list',
                 'admin/shop/<controller>/<action>'=>'shop/admin/<controller>/<action>',
-                'admin/sign/out'=>'user/security/logout',
                 'search'=>'site/search',
                 'search/<ProductSearch[text]>'=>'site/search',
             ],

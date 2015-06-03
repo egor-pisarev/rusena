@@ -1,11 +1,11 @@
 <?php
-use yii\easyii\modules\news\api\News;
+use app\modules\news\api\News;
 use yii\bootstrap\Html;
 ?>
     <section>
         <h1>Новости</h1>
         <div class="news-list">
-            <?php foreach(News::all(["pageSize" => 2]) as $news) : ?>
+            <?php foreach(News::all(["pageSize" => 2,'where'=>['type'=>$types]]) as $news) : ?>
 
                 <div class="news">
                     <div class="date">

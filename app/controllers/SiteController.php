@@ -77,7 +77,12 @@ class SiteController extends Controller
             $news = News::get($id);
             return $this->render('news-item',['news'=>$news]);
         }
-        return $this->render('news');
+
+        $types = [1];
+        if(!Yii::$app->user->isGuest){
+            $types[] = 2;
+        }
+        return $this->render('news',['types'=>$types]);
     }
 
     public function actionRss()

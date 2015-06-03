@@ -4,7 +4,6 @@ namespace app\modules\news\models;
 use Yii;
 use yii\behaviors\SluggableBehavior;
 use yii\easyii\behaviors\SeoBehavior;
-use yii\helpers\ArrayHelper;
 use yii\helpers\StringHelper;
 
 class News extends \yii\easyii\components\ActiveRecord
