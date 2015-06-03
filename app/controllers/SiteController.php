@@ -7,10 +7,11 @@ use yii\easyii\modules\article\models\Category;
 use yii\easyii\modules\catalog\api\Catalog;
 use yii\web\Controller;
 use yii\easyii\modules\page\api\Page;
-use yii\easyii\modules\news\api\News;
+use yii\easyii\modules\news\models\News;
 use app\modules\shop\models\Product;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
+use yii\helpers\StringHelper;
 
 class SiteController extends Controller
 {
@@ -95,6 +96,48 @@ class SiteController extends Controller
             return $this->redirect(['cart-view']);
         }
         throw new NotFoundHttpException();
+    }
+
+    public function actionRss()
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => News::find(),
+            'pagination' => [
+                'pageSize' => 10
+            ],
+        ]);
+
+        $response = Yii::$app->getResponse();
+        $headers = $response->getHeaders();
+
+        $headers->set('Content-Type', 'application/rss+xml; charset=utf-8');
+
+        $response->content = \Zelenin\yii\extensions\Rss\RssView::widget([
+            'dataProvider' => $dataProvider,
+            'channel' => [
+                'title' => Yii::$app->name,
+                'link' => Url::toRoute('/', true),
+                'description' => 'Новости ',
+                'language' => Yii::$app->language
+            ],
+            'items' => [
+                'title' => function ($model, $widget) {
+                    return $model->title;
+                },
+                'description' => function ($model, $widget) {
+                    return StringHelper::truncateWords($model->short, 50);
+                },
+                'link' => function ($model, $widget) {
+                    return Url::toRoute(['site/news', 'id' => $model->news_id], true);
+                },
+                'guid' => function ($model, $widget) {
+                    return Url::toRoute(['site/news', 'id' => $model->news_id], true) . ' ' . date(DATE_RSS, $model->time);
+                },
+                'pubDate' => function ($model, $widget) {
+                    return date(DATE_RSS, $model->time);
+                }
+            ]
+        ]);
     }
 
 

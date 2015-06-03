@@ -80,7 +80,19 @@ $config = [
         'cart' => [
             'class' => 'app\modules\shop\components\ShoppingCart',
             'cartId' => 'my_application_cart',
-        ]
+        ],
+//        'i18n' => [
+//            'translations' => [
+//                'easyii' => [
+//                    'class' => 'yii\i18n\PhpMessageSource',
+//                    'sourceLanguage' => 'en-US',
+//                    'basePath' => '@easyii/messages',
+//                    'fileMap' => [
+//                        'easyii' => 'admin.php',
+//                    ]
+//                ]
+//            ],
+//        ],
     ],
     'modules' => [
         'user' => [

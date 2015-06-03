@@ -17,7 +17,8 @@
         "dektrium/yii2-user": "0.9.*@dev",
         "omnilight/yii2-shopping-cart": "*",
         "opus-online/yii2-ecom": "*",
-        "zxbodya/yii2-image-attachment": "*@dev"
+        "zxbodya/yii2-image-attachment": "*@dev",
+        "zelenin/yii2-rss": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
