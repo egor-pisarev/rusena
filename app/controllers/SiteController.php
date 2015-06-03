@@ -15,6 +15,9 @@ use yii\helpers\StringHelper;
 
 class SiteController extends Controller
 {
+    const HOME_PAGE_SLUG = 'home';
+    const ABOUT_PAGE_SLUG = 'about';
+
     public function behaviors(){
         return [
             'seo'=>'app\components\PageSeoBehavior',
@@ -44,10 +47,12 @@ class SiteController extends Controller
                 'pageSize' => 3,
             ],
         ]);
-        return $this->render('index',['productsDataProvider'=>$productsDataProvider]);
+        return $this->render('index',[
+            'productsDataProvider'=>$productsDataProvider,
+            'homePage'=>Page::get(self::HOME_PAGE_SLUG),
+            'aboutPage'=>Page::get(self::ABOUT_PAGE_SLUG),
+        ]);
     }
-
-
 
     public function actionPage($slug)
     {
