@@ -47,10 +47,13 @@ class SiteController extends Controller
                 'pageSize' => 3,
             ],
         ]);
+
+        $page = Page::get(self::HOME_PAGE_SLUG);
+        $this->setSeoText($page);
+
         return $this->render('index',[
             'productsDataProvider'=>$productsDataProvider,
-            'homePage'=>Page::get(self::HOME_PAGE_SLUG),
-            'aboutPage'=>Page::get(self::ABOUT_PAGE_SLUG),
+            'page'=>$page,
         ]);
     }
 
