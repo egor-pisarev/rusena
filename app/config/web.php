@@ -60,7 +60,6 @@ $config = [
                 'catalog/<category>/<slug>'=>'shop/catalog/view',
                 'cart'=>'shop/cart/list',
                 'admin/shop/<controller>/<action>'=>'shop/admin/<controller>/<action>',
-                'admin/sign/out'=>'user/security/logout',
                 'search'=>'site/search',
                 'search/<ProductSearch[text]>'=>'site/search',
             ],
@@ -81,18 +80,6 @@ $config = [
             'class' => 'app\modules\shop\components\ShoppingCart',
             'cartId' => 'my_application_cart',
         ],
-//        'i18n' => [
-//            'translations' => [
-//                'easyii' => [
-//                    'class' => 'yii\i18n\PhpMessageSource',
-//                    'sourceLanguage' => 'en-US',
-//                    'basePath' => '@easyii/messages',
-//                    'fileMap' => [
-//                        'easyii' => 'admin.php',
-//                    ]
-//                ]
-//            ],
-//        ],
     ],
     'modules' => [
         'user' => [
