@@ -72,32 +72,6 @@ class SiteController extends Controller
         return $this->render('news');
     }
 
-    public function actionCatalog()
-    {
-        if($categorySlug = Yii::$app->request->getQueryParam('category')){
-            if($itemSlug = Yii::$app->request->getQueryParam('item')){
-                $item = Catalog::item($itemSlug);
-                return $this->render('product',['item'=>$item]);
-            }
-            $category = Catalog::cat($categorySlug, ['pageSize' => 2]);
-            return $this->render('category',['category'=>$category]);
-        }
-
-        return $this->render('catalog');
-    }
-
-    public function actionAddToCart($id)
-    {
-        $cart = new ShoppingCart();
-
-        $model = Product::findOne($id);
-        if ($model) {
-            $cart->put($model, 1);
-            return $this->redirect(['cart-view']);
-        }
-        throw new NotFoundHttpException();
-    }
-
     public function actionRss()
     {
         $dataProvider = new ActiveDataProvider([
