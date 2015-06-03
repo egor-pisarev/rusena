@@ -39,7 +39,7 @@ class News extends \yii\easyii\components\ActiveRecord
         return [
             'title' => Yii::t('easyii', 'Title'),
             'text' => Yii::t('easyii', 'Text'),
-            'short' => Yii::t('easyii', 'Short'),
+            'short' => Yii::t('news', 'Short'),
             'thumb' => Yii::t('easyii', 'Image'),
             'slug' => Yii::t('easyii', 'Slug'),
         ];

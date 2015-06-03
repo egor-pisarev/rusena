@@ -88,6 +88,7 @@ $config = [
                     'basePath' => '@app/modules/news/messages',
                     'fileMap' => [
                         'news' => 'admin.php',
+                        'easyii/news' => 'admin.php',
                     ]
                 ]
             ],
