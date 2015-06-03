@@ -8,7 +8,7 @@ use app\modules\shop\widgets\Login;
 use app\modules\shop\widgets\Catalog;
 use app\modules\shop\widgets\Search;
 
-use yii\easyii\modules\news\api\News;
+use app\modules\news\api\News;
 
 /**
  * @var $this \yii\base\View
@@ -101,9 +101,14 @@ $asset = \app\themes\rusena\assets\Asset::register($this);
 					</div>
 					<div class="aside-block">
                         <?php if(Yii::$app->controller->action->id != 'news'):?>
+                            <?php  $types = [1];
+                            if(!Yii::$app->user->isGuest){
+                                $types[] = 2;
+                            }
+                            ?>
                             <?=Html::a('Новости',['/site/news'],['class'=>'title news-title'])?>
                             <div class="news-block">
-                                <?php foreach(News::all(["pageSize" => 2]) as $news) : ?>
+                                <?php foreach(News::all(["pageSize" => 2,'where'=>['type'=>$types]]) as $news) : ?>
                                     <div class="news">
                                         <div class="date"><?= $news->time ?></div>
                                         <a href="/news/view/<?= $news->id ?>"><?= $news->title ?></a>
