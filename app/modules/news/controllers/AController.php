@@ -158,6 +158,19 @@ class AController extends \yii\easyii\components\Controller
 
     public function actionSendMails($id)
     {
+        $page = Page::find()->where(['slug'=>'news-email'])->one();
+        if(!$page){
+            $this->flash('error', 'Не найдена страница с slug "news-email". Для отправки сообщений необходимо создать страницу в разделе "Страницы".
+            В поле Текст необходимо написать текст письма. В тексте можно использовать заменители: <br>
+             {{user.username}}<br>
+            {{user.name}}<br>
+            {{news.titleLink}}<br>
+            {{news.readMoreLink}}<br>
+            {{news.short}}<br>
+            ');
+            return $this->redirect(['/admin/protectednews']);
+        }
+
         $model = News::findOne($id);
         if(!$model){
             throw new HttpException(404);
@@ -167,7 +180,7 @@ class AController extends \yii\easyii\components\Controller
         $totalCount = 0;
         foreach(User::findAll(['blocked_at'=>null]) as $user){
             $totalCount++;
-            if($this->_sendEmail($user, $model)){
+            if($this->_sendEmail($user, $model, $page)){
                 $sentCount++;
             }
         }
@@ -176,9 +189,8 @@ class AController extends \yii\easyii\components\Controller
         return $this->redirect(['/admin/protectednews']);
     }
 
-    protected function _sendEmail($user, $news)
+    protected function _sendEmail($user, $news, $page)
     {
-        $page = Page::find()->where(['slug'=>'news-email'])->one();
 
         $placeholders = [
             '{{user.username}}'=>$user->username,
