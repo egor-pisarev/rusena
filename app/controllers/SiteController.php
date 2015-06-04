@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 use Yii;
+use yii\easyii\models\Setting;
 use yii\easyii\modules\article\models\Category;
 use yii\web\Controller;
 use yii\easyii\modules\page\api\Page;
@@ -12,11 +13,13 @@ use app\modules\shop\models\Product;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\helpers\StringHelper;
+use app\models\ContactForm;
 
 class SiteController extends Controller
 {
     const HOME_PAGE_SLUG = 'home';
     const ABOUT_PAGE_SLUG = 'about';
+    const CONTACT_PAGE_SLUG = 'contact';
 
     public function behaviors(){
         return [
@@ -29,6 +32,10 @@ class SiteController extends Controller
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
+            ],
+            'captcha' => [
+                'class' => 'yii\captcha\CaptchaAction',
+//                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
     }
@@ -66,10 +73,10 @@ class SiteController extends Controller
         return $this->render('page',['page'=>$page]);
     }
 
-    public function actionFeedback()
-    {
-        return $this->render('feedback');
-    }
+//    public function actionFeedback()
+//    {
+//        return $this->render('feedback');
+//    }
 
     public function actionNews()
     {
@@ -126,6 +133,42 @@ class SiteController extends Controller
             ]
         ]);
     }
+
+    /**
+     * @return string|\yii\web\Response
+     */
+    public function actionFeedback()
+    {
+        $page = Page::get(self::CONTACT_PAGE_SLUG);
+
+        $this->setSeoText($page);
+
+        $model = new ContactForm();
+        if (!$model->load(Yii::$app->request->post())){
+            return $this->render('feedback', [
+                'model' => $model,
+                'page' => $page,
+            ]);
+        }
+        $feedbackEmails = explode(',',Setting::get('feedback_emails'));
+        if(!is_array($feedbackEmails)){
+            $feedbackEmails = array($feedbackEmails);
+        }
+        $result = true;
+        foreach($feedbackEmails as $feedbackEmail){
+            $result = $result && $model->contact($feedbackEmail);
+        }
+        if($result) {
+            Yii::$app->session->setFlash('contactFormSubmitted');
+            return $this->goBack();
+        } else {
+            return $this->render('feedback', [
+                'model' => $model,
+                'page' => $page,
+            ]);
+        }
+    }
+
 
 
 }

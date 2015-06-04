@@ -802,3 +802,97 @@ footer {
 	font-size: 16px;
 	color: #c93084;
 }
+#contacts-block {
+    margin-bottom: 40px;
+}
+#contacts-block h3 {
+    font-size: 18px;
+    text-transform: uppercase;
+}
+#contacts-block .phones {
+    background: url(../images/phone.png) left center no-repeat;
+}
+#contacts-block .emails {
+    background: url(../images/email.png) left center no-repeat;
+}
+#contacts-block .skype {
+    background: url(../images/skype.png) left center no-repeat;
+}
+#contacts-block .address {
+    background: url(../images/address.png) left center no-repeat;
+}
+#contacts-block .phones,
+#contacts-block .emails,
+#contacts-block .skype,
+#contacts-block .address {
+    padding-left: 45px;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+#contacts-block span {
+    display: block;
+    line-height: 28px;
+}
+#contacts-block .phones {
+    font-size: 18px;
+}
+#map-block h2,
+#callback-form h2 {
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    color: #666;
+    border-bottom: 1px dashed #666;
+}
+#map-container {
+    width: 100%;
+    height: 380px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    margin-bottom: 50px;
+}
+
+#callback-form .form-element {
+    margin-bottom: 12px;
+    width: 400px;
+}
+#callback-form .form-element input[type="text"] {
+    font-size: 12px;
+    line-height: 24px;
+    height: 24px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding: 0 10px;
+    width: 300px;
+}
+#callback-form .form-element textarea {
+    font-size: 12px;
+    line-height: 16px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding: 5px 10px;
+    width: 400px;
+    height: 120px;
+}
+#callback-form input[type="submit"], #callback-form input[type="submit"]:focus, #callback-form input[type="submit"]:active {
+    display: block;
+    color: #fff;
+    font-size: 18px;
+    padding: 8px 25px;
+    background: url(../images/content-btn.jpg) repeat-x;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    float: right;
+}
+#callback-form input[type="submit"]:hover {
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.9;
+}
+#callback-form .form-element input[type="text"]#contactform-verifycode{
+    margin: 12px;
+    width: 180px;
+}

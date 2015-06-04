@@ -1,3 +1,51 @@
-<?php use yii\easyii\modules\feedback\api\Feedback; ?>
+<?php
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
+use yii\captcha\Captcha;
 
-<?= Feedback::form() ?>
+/* @var $this yii\web\View */
+/* @var $form yii\bootstrap\ActiveForm */
+/* @var $model app\models\ContactForm */
+?>
+<section>
+    <h1><?=$page->title?></h1>
+    <div class="page">
+<?=$page->text?>
+
+<div id="callback-form">
+    <h2>Обратная связь</h2>
+    <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
+        <div class="alert alert-success">
+            Ваше сообщение успешно отправлено. Спасибо, что связались с нами
+        </div>
+    <?php else: ?>
+        <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
+
+        <div class="form-element">
+            <?= $form->field($model, 'name')->textInput(['placeholder'=>'Ваше имя*']) ?>
+        </div>
+        <div class="form-element">
+            <?= $form->field($model, 'email')->textInput(['placeholder'=>'E-mail*']) ?>
+        </div>
+        <div class="form-element">
+            <?= $form->field($model, 'phone')->textInput(['placeholder'=>'Телефон']) ?>
+        </div>
+        <div class="form-element">
+            <?= $form->field($model, 'body')->textarea(['placeholder'=>'Текст сообщения']) ?>
+        </div>
+        <div class="form-element">
+            <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+                'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-3">{input}</div></div>',
+            ]) ?>
+        </div>
+        <div class="form-element submit">
+            <input type="submit" value="Отправить" name="">
+        </div>
+        <?php ActiveForm::end(); ?>
+    <?php endif; ?>
+
+</div>
+
+
+</div>
+</section>
