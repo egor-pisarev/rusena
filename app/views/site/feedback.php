@@ -35,7 +35,7 @@ use yii\captcha\Captcha;
         </div>
         <div class="form-element">
             <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
-                'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-3">{input}</div></div>',
+                'template' => '<div class="row"><div class="col-lg-6">{image}</div><div class="col-lg-6">{input}</div></div>',
             ]) ?>
         </div>
         <div class="form-element submit">
