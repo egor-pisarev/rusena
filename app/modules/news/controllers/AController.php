@@ -30,12 +30,15 @@ class AController extends \yii\easyii\components\Controller
 
     public function actionIndex()
     {
+        $title = Yii::$app->request->get('title');
+
         $data = new ActiveDataProvider([
-            'query' => News::find()->desc(),
+            'query' => News::find()->andFilterWhere(['like', 'title', $title])->desc(),
         ]);
 
         return $this->render('index', [
-            'data' => $data
+            'data' => $data,
+            'title'=>$title,
         ]);
     }
 

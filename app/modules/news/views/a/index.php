@@ -7,6 +7,9 @@ $this->title = Yii::t('easyii', 'News');
 ?>
 
 <?= $this->render('_menu') ?>
+<form>
+    <?=Html::textInput('title',$title,['placeholder'=>'Поиск по заголовку'])?>
+</form>
 
 <?php if($data->count > 0) : ?>
     <table class="table table-hover">
