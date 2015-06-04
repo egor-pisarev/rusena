@@ -130,6 +130,6 @@ class Product extends \yii\db\ActiveRecord implements CartPositionInterface
 
     public static function findBySlug($slug)
     {
-        return self::find(['slug'=>$slug])->one();
+        return self::find()->where(['slug'=>$slug])->one();
     }
 }
