@@ -36,7 +36,10 @@ $this->title = Yii::t('easyii', 'News');
                         'data-link' => Url::to(['/admin/protectednews/a/']),
                     ]) ?>
                 </td>
-                <td class="control"><a href="<?= Url::to(['/admin/protectednews/a/delete', 'id' => $item->primaryKey]) ?>" class="glyphicon glyphicon-remove confirm-delete" title="<?= Yii::t('easyii', 'Delete item') ?>"></a></td>
+                <td class="control">
+                    <a href="<?= Url::to(['/admin/protectednews/a/delete', 'id' => $item->primaryKey]) ?>" class="glyphicon glyphicon-remove confirm-delete" title="<?= Yii::t('easyii', 'Delete item') ?>"></a>
+                    <a href="<?= Url::to(['/admin/protectednews/a/send-mails', 'id' => $item->primaryKey]) ?>" class="glyphicon glyphicon-envelope" title="Отправить сообщения"></a>
+                </td>
             </tr>
     <?php endforeach; ?>
         </tbody>

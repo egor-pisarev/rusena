@@ -1,13 +1,13 @@
 <?php
 
 namespace app\controllers;
-use app\modules\shop\modules\admin\models\ProductSearch;
 use Yii;
 use yii\easyii\modules\article\models\Category;
-use yii\easyii\modules\catalog\api\Catalog;
 use yii\web\Controller;
 use yii\easyii\modules\page\api\Page;
-use yii\easyii\modules\news\models\News;
+use app\modules\news\models\News;
+use app\modules\news\api\News as NewsApi;
+
 use app\modules\shop\models\Product;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
@@ -73,8 +73,8 @@ class SiteController extends Controller
 
     public function actionNews()
     {
-        if($id = Yii::$app->request->getQueryParam('id')){
-            $news = News::get($id);
+        if($slug = Yii::$app->request->getQueryParam('slug')){
+            $news = NewsApi::get($slug);
             return $this->render('news-item',['news'=>$news]);
         }
 

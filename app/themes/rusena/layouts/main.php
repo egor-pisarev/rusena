@@ -111,11 +111,11 @@ $asset = \app\themes\rusena\assets\Asset::register($this);
                                 <?php foreach(News::all(["pageSize" => 2,'where'=>['type'=>$types]]) as $news) : ?>
                                     <div class="news">
                                         <div class="date"><?= $news->time ?></div>
-                                        <a href="/news/view/<?= $news->id ?>"><?= $news->title ?></a>
+                                        <?=Html::a($news->title,['/site/news','slug'=>$news->slug])?>
                                         <div class="text">
                                             <p><?= $news->short ?></p>
                                         </div>
-                                        <a href="/news/view/<?= $news->id ?>" class="more">Подробнее</a>
+                                        <?=Html::a('Подробнее',['/site/news','slug'=>$news->slug],['class'=>'more'])?>
                                     </div>
                                 <?php endforeach; ?>
                             </div>

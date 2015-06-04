@@ -3,6 +3,8 @@ namespace app\modules\news\controllers;
 
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\easyii\modules\page\models\Page;
+use yii\web\HttpException;
 use yii\widgets\ActiveForm;
 use yii\web\UploadedFile;
 
@@ -10,6 +12,9 @@ use yii\easyii\components\Controller;
 use app\modules\news\models\News;
 use yii\easyii\helpers\Image;
 use yii\easyii\behaviors\StatusController;
+use app\modules\user\models\User;
+use yii\easyii\models\Setting;
+use yii\bootstrap\Html;
 
 class AController extends \yii\easyii\components\Controller
 {
@@ -149,5 +154,51 @@ class AController extends \yii\easyii\components\Controller
     public function actionOff($id)
     {
         return $this->changeStatus($id, News::STATUS_OFF);
+    }
+
+    public function actionSendMails($id)
+    {
+        $model = News::findOne($id);
+        if(!$model){
+            throw new HttpException(404);
+        }
+
+        $sentCount = 0;
+        $totalCount = 0;
+        foreach(User::findAll(['blocked_at'=>null]) as $user){
+            $totalCount++;
+            if($this->_sendEmail($user, $model)){
+                $sentCount++;
+            }
+        }
+
+        $this->flash('success', 'Отправлено '.$sentCount.' сообщений из '.$totalCount);
+        return $this->redirect(['/admin/protectednews']);
+    }
+
+    protected function _sendEmail($user, $news)
+    {
+        $page = Page::find()->where(['slug'=>'news-email'])->one();
+
+        $placeholders = [
+            '{{user.username}}'=>$user->username,
+            '{{user.name}}'=>$user->profile->name,
+            '{{news.titleLink}}'=>Html::a($news->title,['/site/news','slug'=>$news->slug]),
+            '{{news.readMoreLink}}'=>Html::a('Читать подробнее',['/site/news','slug'=>$news->slug]),
+            '{{news.short}}'=>$news->short
+        ];
+
+        $text = str_replace(array_keys($placeholders),$placeholders,$page->text);
+
+        $sent = Yii::$app->mailer->compose()
+            ->setFrom(Setting::get('robot_email'))
+            ->setTo($user->email)
+            ->setSubject(strtoupper(Yii::$app->request->serverName).' Добавлена новость на сайте')
+            ->setTextBody($text)
+            ->setReplyTo(Setting::get('admin_email'))
+            ->send();
+
+        return $sent;
+
     }
 }
