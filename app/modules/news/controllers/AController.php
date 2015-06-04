@@ -203,10 +203,10 @@ class AController extends \yii\easyii\components\Controller
         $text = str_replace(array_keys($placeholders),$placeholders,$page->text);
 
         $sent = Yii::$app->mailer->compose()
+            ->setHtmlBody($text)
             ->setFrom(Setting::get('robot_email'))
             ->setTo($user->email)
             ->setSubject(strtoupper(Yii::$app->request->serverName).' Добавлена новость на сайте')
-            ->setTextBody($text)
             ->setReplyTo(Setting::get('admin_email'))
             ->send();
 
