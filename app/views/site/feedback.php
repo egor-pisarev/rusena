@@ -43,7 +43,7 @@ use yii\captcha\Captcha;
         <div class="form-element">
             <?= $form->field($model, 'body')->textarea(['placeholder'=>'Текст сообщения']) ?>
         </div>
-        <div class="form-element">
+        <div class="form-element" style="height: 100px">
             <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
                 'template' => '<div class="row"><div class="col-lg-6">{image}</div><div class="col-lg-6">{input}</div></div>',
             ]) ?>
