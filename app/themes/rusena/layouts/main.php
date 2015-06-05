@@ -133,6 +133,8 @@ $asset = \app\themes\rusena\assets\Asset::register($this);
 			<div class="row">
 				<div class="col-md-4">
 					<a id="footer-logo" href="/">Русена</a>
+                    <?php use yii\easyii\modules\text\api\Text; ?>
+                    <?= Text::get( 'metrika' ) ?>
 				</div>
 				<div class="col-md-4">
 					<div id="nav-footer" class="footer-menu">
