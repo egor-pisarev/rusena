@@ -198,8 +198,8 @@ class AController extends \yii\easyii\components\Controller
         $placeholders = [
             '{{user.username}}'=>$user->username,
             '{{user.name}}'=>$user->profile->name,
-            '{{news.titleLink}}'=>Html::a($news->title,['/site/news','slug'=>$news->slug]),
-            '{{news.readMoreLink}}'=>Html::a('Читать подробнее',['/site/news','slug'=>$news->slug]),
+            '{{news.titleLink}}'=>Html::a($news->title,Yii::$app->urlManager->createAbsoluteUrl(['/site/news','slug'=>$news->slug])),
+            '{{news.readMoreLink}}'=>Html::a($news->title,Yii::$app->urlManager->createAbsoluteUrl(['/site/news','slug'=>$news->slug])),
             '{{news.short}}'=>$news->short
         ];
 
