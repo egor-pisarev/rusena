@@ -13,7 +13,7 @@ use yii\bootstrap\Html;
     <span class="label">ТОВАРОВ В КОРЗИНЕ:</span><span class="value"><?=$count?></span>
     <span class="label">НА СУММУ:</span><span class="value"><?=$cost?> Р</span>
     <div class="actions">
-        <?=Html::a('В корзну',['/shop/cart/list'],['class'=>'btn'])?>
+        <?=Html::a('В корзину',['/shop/cart/list'],['class'=>'btn'])?>
         <?=Html::a('Оформить',['/shop/cart/order'],['class'=>'btn'])?>
     </div>
 </div>
