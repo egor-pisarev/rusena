@@ -188,12 +188,12 @@ $asset = \app\themes\rusena\assets\Asset::register($this);
 				</div>
 				<div class="col-md-4">
 					<div class="footer-links">
-						<a href="#" class="item">
+						<a href="http://siss-cms.ru" class="item" target=">blank">
 							<div class="image">
 							</div>
 							<span>Разработка сайта</span>
 						</a>
-						<a href="#" class="item">
+						<a href="http://aitov.pro/" class="item"  target=">blank">
 							<div class="image">
 							</div>
 							<span>Дизайн сайта</span>
