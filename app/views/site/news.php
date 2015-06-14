@@ -7,7 +7,7 @@ $asset = \app\themes\rusena\assets\Asset::register($this);
     <section>
         <h1>Новости <?=Html::a(Html::img($asset->baseUrl.'/images/rss.png',['width'=>'24px']),['/site/rss'])?></h1>
         <div class="news-list">
-            <?php foreach(News::all(["pageSize" => 2,'where'=>['type'=>$types]]) as $news) : ?>
+            <?php foreach(News::all(["pageSize" => 10,'where'=>['type'=>$types]]) as $news) : ?>
 
                 <div class="news">
                     <div class="date">

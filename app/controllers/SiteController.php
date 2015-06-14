@@ -73,15 +73,11 @@ class SiteController extends Controller
         return $this->render('page',['page'=>$page]);
     }
 
-//    public function actionFeedback()
-//    {
-//        return $this->render('feedback');
-//    }
-
     public function actionNews()
     {
         if($slug = Yii::$app->request->getQueryParam('slug')){
             $news = NewsApi::get($slug);
+            $this->setSeoText($news);
             return $this->render('news-item',['news'=>$news]);
         }
 
