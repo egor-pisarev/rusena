@@ -23,7 +23,8 @@ $asset = \app\themes\rusena\assets\Asset::register($this);
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
         <title><?php echo Html::encode($this->title); ?></title>
         <?php $this->head(); ?>
 
@@ -38,7 +39,7 @@ $asset = \app\themes\rusena\assets\Asset::register($this);
     <header>
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-xs-6">
 						<div class="logo-box">
 							<a id="logo" href="/">
 								Русена
@@ -48,7 +49,7 @@ $asset = \app\themes\rusena\assets\Asset::register($this);
 							</span>
 						</div>
 					</div>
-					<div class="col-md-6">
+					<div class="col-xs-6">
 						<?=Cart::widget()?>
 					</div>
 				</div>
@@ -57,7 +58,7 @@ $asset = \app\themes\rusena\assets\Asset::register($this);
 		<div id="main-menu">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-12">
+					<div class="col-xs-12">
 						<nav class="navbar navbar-default" role="navigation">
 
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -88,7 +89,7 @@ $asset = \app\themes\rusena\assets\Asset::register($this);
 	<main>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-3">
+				<div class="col-xs-3">
                 <?php if(Yii::$app->controller->action->id != 'login'):?>
 					<div class="aside-block">
                         <?=Login::widget()?>
@@ -96,7 +97,7 @@ $asset = \app\themes\rusena\assets\Asset::register($this);
                 <?php endif; ?>
 
                     <div class="aside-block">
-						<a class="title catalog-title" href="#">Каталог</a>
+						<a class="title catalog-title" href="/catalog">Каталог</a>
                         <?=Catalog::widget()?>
 					</div>
 					<div class="aside-block">
@@ -122,7 +123,7 @@ $asset = \app\themes\rusena\assets\Asset::register($this);
                         <?php endif; ?>
 					</div>
 				</div>
-				<div class="col-md-9">
+				<div class="col-xs-9">
                     <?=$content?>
 				</div>
 			</div>
@@ -131,13 +132,13 @@ $asset = \app\themes\rusena\assets\Asset::register($this);
 	<footer>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-xs-4">
 					<a id="footer-logo" href="/">Русена</a>
                     <?=Text::get('metrika')?>
                     <?=Text::get('siss')?>
                     <?=Text::get('rambler')?>
 				</div>
-				<div class="col-md-4">
+				<div class="col-xs-4">
 					<div id="nav-footer" class="footer-menu">
                         <?php
                         echo Menu::widget([
@@ -157,7 +158,7 @@ $asset = \app\themes\rusena\assets\Asset::register($this);
                         <?=Catalog::widget()?>
                     </div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-xs-4">
 					<div class="footer-links">
 						<a href="http://siss-cms.ru" class="item" target=">blank">
 							<div class="image">
