@@ -111,7 +111,6 @@ $asset = \app\themes\rusena\assets\Asset::register($this);
                             <div class="news-block">
                                 <?php foreach(News::all(["pageSize" => 2,'where'=>['type'=>$types]]) as $news) : ?>
                                     <div class="news">
-                                        <div class="date"><?= $news->time ?></div>
                                         <?=Html::a($news->title,['/site/news','slug'=>$news->slug])?>
                                         <div class="text">
                                             <p><?= $news->short ?></p>
