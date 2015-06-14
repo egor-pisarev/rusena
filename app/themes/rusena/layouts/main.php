@@ -134,6 +134,8 @@ $asset = \app\themes\rusena\assets\Asset::register($this);
 				<div class="col-md-4">
 					<a id="footer-logo" href="/">Русена</a>
                     <?=Text::get('metrika')?>
+                    <?=Text::get('siss')?>
+                    <?=Text::get('rambler')?>
 				</div>
 				<div class="col-md-4">
 					<div id="nav-footer" class="footer-menu">
