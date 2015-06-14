@@ -95,7 +95,7 @@ class SiteController extends Controller
     public function actionRss()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => News::find(),
+            'query' => News::find()->orderBy('time DESC'),
             'pagination' => [
                 'pageSize' => 10
             ],
