@@ -19,7 +19,7 @@ if($position){
 ?>
 <?= Html::a($model->title,['/shop/catalog/view','slug'=>$model->slug,'category'=>$model->getCategorySlug()],['class'=>'title']) ?>
 <div class="price">
-    <?= $model->price ?> Р
+    <?= Yii::$app->formatter->asDecimal($model->price,2) ?> Р
 </div>
 <div class="actions">
     <?= Html::a('-', ['/shop/cart/update', 'id' => $model->getId(), 'quantity' => $quantity - 1], ['class' => 'subtract', 'disabled' => ($quantity - 1) < 1])?>
