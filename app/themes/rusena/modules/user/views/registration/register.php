@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'enableClientValidation' => false
                 ]); ?>
 
-                <?= $form->field($model, 'username')->label('Логин')->hint('Вводить только латинские буквы') ?>
+                <?= $form->field($model, 'username')->label('Логин')->hint('Латинские буквы и/или цифры') ?>
 
 
                 <?= $form->field($model, 'email') ?>
