@@ -19,6 +19,7 @@ class PageSeoBehavior extends Behavior{
             Yii::$app->view->registerMetaTag([
                 'keywords'=>$page->seo_keywords,
                 'description'=>$page->seo_description,
+                'title'=>$page->seo_title,
             ]);
 
             Yii::$app->view->title = $page->seo_title;

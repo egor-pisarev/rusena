@@ -22,7 +22,6 @@ class CatalogController extends \yii\web\Controller
 
     public function actionIndex()
     {
-
         $page = Page::get('catalog');
 
         $this->setSeoText($page);
