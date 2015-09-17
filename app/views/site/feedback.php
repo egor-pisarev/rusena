@@ -24,31 +24,7 @@ use yii\captcha\Captcha;
 
 <div id="callback-form">
     <h2>Обратная связь</h2>
-    <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
-        <div class="alert alert-success">
-            Ваше сообщение успешно отправлено. Спасибо, что связались с нами
-        </div>
-    <?php else: ?>
-        <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
-
-        <div class="form-element">
-            <?= $form->field($model, 'name')->textInput(['placeholder'=>'Ваше имя*']) ?>
-        </div>
-        <div class="form-element">
-            <?= $form->field($model, 'email')->textInput(['placeholder'=>'E-mail*']) ?>
-        </div>
-        <div class="form-element">
-            <?= $form->field($model, 'phone')->textInput(['placeholder'=>'Телефон']) ?>
-        </div>
-        <div class="form-element">
-            <?= $form->field($model, 'body')->textarea(['placeholder'=>'Текст сообщения']) ?>
-        </div>
-        <div class="form-element submit">
-            <input type="submit" value="Отправить" name="">
-        </div>
-        <?php ActiveForm::end(); ?>
-    <?php endif; ?>
-
+    <?=yii\easyii\modules\feedback\api\Feedback::form()?>
 </div>
 
 

@@ -15,7 +15,7 @@ class ContactForm extends Model
     public $subject = 'Заявка с сайта';
     public $body;
     public $phone;
-    public $verifyCode;
+    public $captcha;
 
     /**
      * @return array the validation rules.
@@ -28,6 +28,8 @@ class ContactForm extends Model
             // email has to be a valid email address
             ['email', 'email'],
             ['phone','string'],
+            ['captcha', 'captcha'],
+            ['captcha', 'required']
             // verifyCode needs to be entered correctly
         ];
     }
@@ -43,7 +45,7 @@ class ContactForm extends Model
 	        'subject' => 'Тема сообщения',
 	        'body' => 'Сообщение',
             'phone'=>'Телефон',
-            'verifyCode' => 'Введите код с картинки',
+            'captcha' => 'Введите код с картинки',
         ];
     }
 
